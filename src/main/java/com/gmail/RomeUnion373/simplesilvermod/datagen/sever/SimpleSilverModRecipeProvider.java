@@ -23,6 +23,8 @@ public class SimpleSilverModRecipeProvider extends RecipeProvider {
         nineBlockStorageRecipes(consumer,RecipeCategory.MISC,
                 SimpleSilverModItems.RAW_SILVER.get(),
                 RecipeCategory.BUILDING_BLOCKS, SimpleSilverModBlocks.RAW_SILVER_BLOCK.get());
+
+        // 問題のやつ
 //        nineBlockStorageRecipesWithCustomPacking(consumer,RecipeCategory.MISC,
 //                SimpleSilverModItems.SILVER_NUGGET.get(),
 //                RecipeCategory.MISC, SimpleSilverModItems.SILVER_INGOT.get());
@@ -40,7 +42,7 @@ public class SimpleSilverModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(pUnpacked), has(pUnpacked)).save(pFinishedRecipeConsumer);
 
     }
-
+    // 問題のやつ
 //    protected static void nineBlockStorageRecipesWithCustomPacking(Consumer<FinishedRecipe> pFinishedRecipeConsumer,
 //                                                  RecipeCategory pUnpackedCategory,
 //                                                  ItemLike pUnpacked,
