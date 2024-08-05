@@ -1,5 +1,5 @@
 package com.gmail.RomeUnion373.simplesilvermod;
-
+// gitのテスト
 import com.gmail.RomeUnion373.simplesilvermod.block.SimpleSilverModBlocks;
 import com.gmail.RomeUnion373.simplesilvermod.item.SimpleSilverModItems;
 import com.gmail.RomeUnion373.simplesilvermod.item.SimpleSilverModTabs;
