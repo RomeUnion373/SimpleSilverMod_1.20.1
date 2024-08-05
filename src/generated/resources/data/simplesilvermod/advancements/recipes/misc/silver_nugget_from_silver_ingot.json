@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_silver_block": {
+    "has_silver_nugget": {
       "conditions": {
         "items": [
           {
             "items": [
-              "simplesilvermod:silver_block"
+              "simplesilvermod:silver_nugget"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "simplesilvermod:silver_ingot"
+        "recipe": "simplesilvermod:silver_nugget_from_silver_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_silver_block",
+      "has_silver_nugget",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "simplesilvermod:silver_ingot"
+      "simplesilvermod:silver_nugget_from_silver_ingot"
     ]
   },
   "sends_telemetry_event": false

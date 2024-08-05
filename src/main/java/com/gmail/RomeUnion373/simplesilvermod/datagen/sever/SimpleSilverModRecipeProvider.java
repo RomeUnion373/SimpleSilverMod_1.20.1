@@ -1,5 +1,6 @@
 package com.gmail.RomeUnion373.simplesilvermod.datagen.sever;
 
+import com.gmail.RomeUnion373.simplesilvermod.SimpleSilverMod;
 import com.gmail.RomeUnion373.simplesilvermod.block.SimpleSilverModBlocks;
 import com.gmail.RomeUnion373.simplesilvermod.item.SimpleSilverModItems;
 import net.minecraft.data.PackOutput;
@@ -13,8 +14,6 @@ public class SimpleSilverModRecipeProvider extends RecipeProvider {
         super(pOutput);
     }
 
-    //TODO silver_ingot.jsonの重複を無くすためにファイル名を別々にしたい
-
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         nineBlockStorageRecipes(consumer,RecipeCategory.MISC,
@@ -24,10 +23,9 @@ public class SimpleSilverModRecipeProvider extends RecipeProvider {
                 SimpleSilverModItems.RAW_SILVER.get(),
                 RecipeCategory.BUILDING_BLOCKS, SimpleSilverModBlocks.RAW_SILVER_BLOCK.get());
 
-        // 問題のやつ
-//        nineBlockStorageRecipesWithCustomPacking(consumer,RecipeCategory.MISC,
-//                SimpleSilverModItems.SILVER_NUGGET.get(),
-//                RecipeCategory.MISC, SimpleSilverModItems.SILVER_INGOT.get());
+        nineBlockStorageRecipesWithCustomPacking(consumer,RecipeCategory.MISC,
+                SimpleSilverModItems.SILVER_NUGGET.get(),
+                RecipeCategory.MISC, SimpleSilverModItems.SILVER_INGOT.get());
     }
 
     protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer,
@@ -36,23 +34,24 @@ public class SimpleSilverModRecipeProvider extends RecipeProvider {
                                                   RecipeCategory pPackedCategory,
                                                   ItemLike pPacked) {
         ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
-                .requires(pPacked).unlockedBy(getHasName(pPacked), has(pPacked)).save(pFinishedRecipeConsumer);
+                .requires(pPacked).unlockedBy(getHasName(pPacked), has(pPacked)).save(pFinishedRecipeConsumer,
+                        SimpleSilverMod.MOD_ID + ":" + getItemName(pUnpacked) + "_from_" + getItemName(pPacked));;
         ShapedRecipeBuilder.shaped(pPackedCategory, pPacked).define('#', pUnpacked)
                 .pattern("###").pattern("###").pattern("###")
                 .unlockedBy(getHasName(pUnpacked), has(pUnpacked)).save(pFinishedRecipeConsumer);
 
     }
-    // 問題のやつ
-//    protected static void nineBlockStorageRecipesWithCustomPacking(Consumer<FinishedRecipe> pFinishedRecipeConsumer,
-//                                                  RecipeCategory pUnpackedCategory,
-//                                                  ItemLike pUnpacked,
-//                                                  RecipeCategory pPackedCategory,
-//                                                  ItemLike pPacked) {
-//        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
-//                .requires(pPacked).unlockedBy(getHasName(pPacked), has(pPacked)).save(pFinishedRecipeConsumer);
-//        ShapedRecipeBuilder.shaped(pPackedCategory, pPacked).define('#', pUnpacked)
-//                .pattern("###").pattern("###").pattern("###")
-//                .unlockedBy(getHasName(pUnpacked), has(pUnpacked)).save(pFinishedRecipeConsumer);
-//    }
+    protected static void nineBlockStorageRecipesWithCustomPacking(Consumer<FinishedRecipe> pFinishedRecipeConsumer,
+                                                  RecipeCategory pUnpackedCategory,
+                                                  ItemLike pUnpacked,
+                                                  RecipeCategory pPackedCategory,
+                                                  ItemLike pPacked) {
+        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
+                .requires(pPacked).unlockedBy(getHasName(pPacked), has(pPacked)).save(pFinishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(pPackedCategory, pPacked).define('#', pUnpacked)
+                .pattern("###").pattern("###").pattern("###")
+                .unlockedBy(getHasName(pUnpacked), has(pUnpacked)).save(pFinishedRecipeConsumer,
+                        SimpleSilverMod.MOD_ID + ":" + getItemName(pUnpacked) + "_from_" + getItemName(pPacked));;
+    }
 
 }
