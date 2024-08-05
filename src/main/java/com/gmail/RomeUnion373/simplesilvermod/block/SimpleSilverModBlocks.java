@@ -20,9 +20,11 @@ public class SimpleSilverModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SimpleSilverMod.MOD_ID);
     // レジストリにブロックを登録
     public static final RegistryObject<Block> SILVER_BLOCK =
-            registryBlockItem("silver_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    registryBlockItem("silver_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)
+            .strength(3.0F, 6.0F)));
     public static final RegistryObject<Block> RAW_SILVER_BLOCK =
-            registryBlockItem("raw_silver_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK)));
+            registryBlockItem("raw_silver_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_GOLD_BLOCK)
+                    .strength(5.0F, 6.0F)));
 
     // BlockItemのレジストリを作る
     private static<T extends Block> RegistryObject<T> registryBlockItem(String name, Supplier<T> supplier) {
